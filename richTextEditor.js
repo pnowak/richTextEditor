@@ -84,9 +84,21 @@ class RichTextEditor extends TextEditor {
       button.setAttribute('type', 'button');
       button.addEventListener('click', () => {
         action.cmd();
-        action.state() ? addClass(button, 'active') : removeClass(button, 'active');
+        if (action.state) {
+          action.state() ? addClass(button, 'active') : removeClass(button, 'active');
+        };
         this.focus();
       });
+
+      const listener = () => {
+        if (action.state) {
+          action.state() ? addClass(button, 'active') : removeClass(button, 'active');
+        }
+      };
+
+      this.richText.addEventListener('keyup', listener);
+      this.richText.addEventListener('mouseup', listener);
+      button.addEventListener('click', listener);
 
       this.actionBar.appendChild(button);
     });
@@ -141,14 +153,6 @@ class RichTextEditor extends TextEditor {
   }
 
   /**
-   * Selects all of the content of the editable region.
-   *
-   */
-  selectAll() {
-    return document.execCommand('selectAll');
-  }
-
-  /**
    *  Get editor value.
    *
    * @return {HTMLElement}
@@ -171,7 +175,6 @@ class RichTextEditor extends TextEditor {
    *
    */
   showRichText() {
-    this.selectAll();
     this.richTextStyle.display = 'block';
   }
 
