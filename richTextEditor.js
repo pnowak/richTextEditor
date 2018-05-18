@@ -98,7 +98,6 @@ class RichTextEditor extends TextEditor {
 
       this.richText.addEventListener('keyup', listener);
       this.richText.addEventListener('mouseup', listener);
-      button.addEventListener('click', listener);
 
       this.actionBar.appendChild(button);
     });
