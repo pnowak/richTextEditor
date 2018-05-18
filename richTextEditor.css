@@ -1,0 +1,27 @@
+/**
+* RichText Editor
+*/
+
+.htRichTextHolder {
+  border: 1px solid #ccc;
+  background-color: #FFF;
+  padding: 4px 5px;
+}
+
+.htActionBar {
+  border: 1px solid #ccc;
+  background-color: #FFF;
+  padding: 3px 5px;
+}
+
+.htActionBar button {
+  font-size: 16px;
+  background-color: #FFF;
+  color: #444;
+  border: none;
+  cursor: pointer;
+}
+
+.htActionBar button.active {
+  color: #FF5721;
+}
